@@ -7,10 +7,10 @@ function pre_build {
     :
 }
 
-function build_wheel {
+#function build_wheel {
     # Prevent spurious numpy upgrade by using bdist_wheel
-    build_bdist_wheel $@
-}
+    #build_bdist_wheel $@
+#}
 
 function run_tests {
     # Runs tests on installed distribution from an empty directory
