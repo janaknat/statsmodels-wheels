@@ -12,7 +12,10 @@ env:
       - MB_ML_VER=2014
       - DOCKER_TEST_IMAGE=multibuild/xenial_arm64v8
       - ANACONDA_USERNAME=statsmodels
-      # Following generated with
+      - OPENBLAS_NUM_THREADS=1
+      - OMP_NUM_THREADS=1
+      - VML_NUM_THREADS=1
+      - MKL_NUM_THREADS=1
       - DAILY_COMMIT=master
       - PYTHONHASHSEED=0
 
