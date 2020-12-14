@@ -19,5 +19,5 @@ function run_tests {
     export OPENBLAS_VERBOSE=2
     python -c 'import numpy as np;np.show_config()'
     python -c 'import statsmodels.api as sm; sm.show_versions();'
-    python -c 'import statsmodels; statsmodels.test(extra_args=["--durations=20", "--skip-slow", "--skip-examples", "-n 2"], exit=True)'
+    python -c 'import statsmodels; statsmodels.test(extra_args=["--durations=20", "--skip-slow", "--skip-examples", "-n auto"], exit=True)'
 }
