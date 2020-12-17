@@ -4,7 +4,8 @@
 function pre_build {
     # Any stuff that you need to do before you start building the wheels
     # Runs in the root directory of this repository.
-    :
+    echo "GCC VERSION: "
+    gcc --version
 }
 
 #function build_wheel {
@@ -19,5 +20,5 @@ function run_tests {
     export OPENBLAS_VERBOSE=2
     python -c 'import numpy as np;np.show_config()'
     python -c 'import statsmodels.api as sm; sm.show_versions();'
-    python -c 'import statsmodels; statsmodels.test(extra_args=["--durations=20", "--skip-slow", "--skip-examples", "-n auto"], exit=True)'
+    python -c 'import statsmodels; statsmodels.test(extra_args=["--durations=20", "--skip-slow", "--skip-examples"], exit=True)'
 }
