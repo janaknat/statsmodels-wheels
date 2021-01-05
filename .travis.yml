@@ -20,8 +20,6 @@ env:
       - PYTHONHASHSEED=0
 
 language: python
-python: 3.6
-sudo: required
 arch: arm64-graviton2
 dist: focal
 virt: vm
@@ -33,12 +31,11 @@ matrix:
     - os: linux
       env:
         - MB_PYTHON_VERSION=3.7
+        - python: 3.7
     - os: linux
       env:
         - MB_PYTHON_VERSION=3.8
-    - os: linux
-      env:
-        - MB_PYTHON_VERSION=3.9
+        - python: 3.8
 
 before_install:
     - if [ "$TRAVIS_BRANCH" == "master" ]; then
@@ -60,7 +57,10 @@ install:
     - build_wheel $REPO_DIR $PLAT
 
 script:
-    - install_run $PLAT
+    - install_wheel
+    - mkdir tmp_for_test
+    - (cd tmp_for_test && run_tests)
+    - rmdir tmp_for_test 2>/dev/null || echo "Cannot remove tmp_for_test"
 
 after_success:
     # Upload wheels to anaconda.org

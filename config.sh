@@ -14,11 +14,12 @@ function pre_build {
 #}
 
 function run_tests {
+
     # Runs tests on installed distribution from an empty directory
     python --version
     # Check OpenBLAS core
     export OPENBLAS_VERBOSE=2
     python -c 'import numpy as np;np.show_config()'
     python -c 'import statsmodels.api as sm; sm.show_versions();'
-    python -c 'import statsmodels; statsmodels.test(extra_args=["--durations=20", "--skip-slow", "--skip-examples"], exit=True)'
+    python -c 'import statsmodels; statsmodels.test(extra_args=["--durations=20", "-n 8", "--skip-slow", "--skip-examples"], exit=True)'
 }
