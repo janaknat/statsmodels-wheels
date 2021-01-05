@@ -32,13 +32,13 @@ matrix:
   include:
     - os: linux
       env:
-        - MB_PYTHON_VERSION=3.6
-    - os: linux
-      env:
         - MB_PYTHON_VERSION=3.7
     - os: linux
       env:
         - MB_PYTHON_VERSION=3.8
+    - os: linux
+      env:
+        - MB_PYTHON_VERSION=3.9
 
 before_install:
     - if [ "$TRAVIS_BRANCH" == "master" ]; then
