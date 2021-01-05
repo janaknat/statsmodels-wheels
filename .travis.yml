@@ -19,6 +19,7 @@ env:
       - DAILY_COMMIT=master
       - PYTHONHASHSEED=0
       - CONFIG_PATH=config.sh
+      - PIP_CMD=pip3
 
 language: python
 arch: arm64-graviton2
@@ -30,16 +31,14 @@ services: docker
 matrix:
   include:
     - os: linux
+      python: 3.7
       env:
         - MB_PYTHON_VERSION=3.7
-        - python: 3.7
-        - PIP_CMD=pip3
         - PYTHON_EXE=python3.7
     - os: linux
+      python: 3.8
       env:
         - MB_PYTHON_VERSION=3.8
-        - python: 3.8
-        - PIP_CMD=pip3
         - PYTHON_EXE=python3.8
 
 before_install:
@@ -64,6 +63,7 @@ install:
 script:
     - install_wheel
     - mkdir tmp_for_test
+    - source config.sh
     - (cd tmp_for_test && run_tests)
     - rmdir tmp_for_test 2>/dev/null || echo "Cannot remove tmp_for_test"
 
