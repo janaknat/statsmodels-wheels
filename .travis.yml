@@ -18,6 +18,9 @@ env:
       - MKL_NUM_THREADS=1
       - DAILY_COMMIT=master
       - PYTHONHASHSEED=0
+      - PIP_CMD=pip
+      - PYTHON_EXE=python
+      - CONFIG_PATH=config.sh
 
 language: python
 arch: arm64-graviton2
